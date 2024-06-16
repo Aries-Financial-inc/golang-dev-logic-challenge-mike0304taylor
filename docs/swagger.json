@@ -1,0 +1,108 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Golang Dev Logic Challenge",
+        "contact": {},
+        "version": "1.0"
+    },
+    "paths": {
+        "/analyze": {
+            "post": {
+                "description": "Get graph, maximum profit and loss and break even point",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Analysis"
+                ],
+                "summary": "Analyze option contracts",
+                "parameters": [
+                    {
+                        "description": "Option contracts",
+                        "name": "params",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.OptionContract"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/handlers.AnalysisResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "handlers.AnalysisResponse": {
+            "type": "object",
+            "properties": {
+                "break_even_points": {
+                    "type": "number"
+                },
+                "graph_data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.GraphPoint"
+                    }
+                },
+                "max_loss": {},
+                "max_profit": {}
+            }
+        },
+        "models.GraphPoint": {
+            "type": "object",
+            "properties": {
+                "x": {
+                    "type": "number"
+                },
+                "y": {
+                    "type": "number"
+                }
+            }
+        },
+        "models.OptionContract": {
+            "type": "object",
+            "properties": {
+                "ask": {
+                    "type": "number",
+                    "example": 6
+                },
+                "bid": {
+                    "type": "number",
+                    "example": 4
+                },
+                "expiration_date": {
+                    "type": "string",
+                    "example": "2025-12-31T00:00:00Z"
+                },
+                "long_short": {
+                    "type": "string",
+                    "example": "long"
+                },
+                "strike_price": {
+                    "type": "number",
+                    "example": 100
+                },
+                "type": {
+                    "type": "string",
+                    "example": "Call"
+                }
+            }
+        }
+    }
+}

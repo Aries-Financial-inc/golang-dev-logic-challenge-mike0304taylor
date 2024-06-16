@@ -1,0 +1,72 @@
+definitions:
+  handlers.AnalysisResponse:
+    properties:
+      break_even_points:
+        type: number
+      graph_data:
+        items:
+          $ref: '#/definitions/models.GraphPoint'
+        type: array
+      max_loss: {}
+      max_profit: {}
+    type: object
+  models.GraphPoint:
+    properties:
+      x:
+        type: number
+      "y":
+        type: number
+    type: object
+  models.OptionContract:
+    properties:
+      ask:
+        example: 6
+        type: number
+      bid:
+        example: 4
+        type: number
+      expiration_date:
+        example: "2025-12-31T00:00:00Z"
+        type: string
+      long_short:
+        example: long
+        type: string
+      strike_price:
+        example: 100
+        type: number
+      type:
+        example: Call
+        type: string
+    type: object
+info:
+  contact: {}
+  title: Golang Dev Logic Challenge
+  version: "1.0"
+paths:
+  /analyze:
+    post:
+      consumes:
+      - application/json
+      description: Get graph, maximum profit and loss and break even point
+      parameters:
+      - description: Option contracts
+        in: body
+        name: params
+        required: true
+        schema:
+          items:
+            $ref: '#/definitions/models.OptionContract'
+          type: array
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/handlers.AnalysisResponse'
+            type: array
+      summary: Analyze option contracts
+      tags:
+      - Analysis
+swagger: "2.0"
