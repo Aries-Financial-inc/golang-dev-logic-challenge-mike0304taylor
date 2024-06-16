@@ -15,7 +15,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/analyze": {
+        "/analysis": {
             "post": {
                 "description": "Get graph, maximum profit and loss and break even point",
                 "consumes": [

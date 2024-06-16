@@ -43,7 +43,7 @@ info:
   title: Golang Dev Logic Challenge
   version: "1.0"
 paths:
-  /analyze:
+  /analysis:
     post:
       consumes:
       - application/json

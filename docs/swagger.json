@@ -6,7 +6,7 @@
         "version": "1.0"
     },
     "paths": {
-        "/analyze": {
+        "/analysis": {
             "post": {
                 "description": "Get graph, maximum profit and loss and break even point",
                 "consumes": [

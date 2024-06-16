@@ -81,7 +81,7 @@ func TestIntegration(t *testing.T) {
 	gin.SetMode(gin.TestMode)
 
 	router := gin.Default()
-	router.POST("/analyze", handlers.AnalysisHandler)
+	router.POST("/analysis", handlers.AnalysisHandler)
 
 	jsonData, err := json.Marshal([]models.OptionContract{
 		sampleOptionContract[0],
@@ -93,8 +93,8 @@ func TestIntegration(t *testing.T) {
 	// Create a new HTTP recorder to capture the response
 	recorder := httptest.NewRecorder()
 
-	// Create a new HTTP POST request to the /analyze endpoint with the JSON data as the request body
-	request, _ := http.NewRequest("POST", "/analyze", bytes.NewBuffer(jsonData))
+	// Create a new HTTP POST request to the /analysis endpoint with the JSON data as the request body
+	request, _ := http.NewRequest("POST", "/analysis", bytes.NewBuffer(jsonData))
 	request.Header.Set("Content-Type", "application/json")
 	router.ServeHTTP(recorder, request)
 

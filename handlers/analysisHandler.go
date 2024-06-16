@@ -15,7 +15,7 @@ func round(value float64) float64 {
 func CalculateGraphData(contract models.OptionContract) []models.GraphPoint {
 	graphData := []models.GraphPoint{}
 
-	for i := 50.0; i < 150.0; i += 10.0 {
+	for i := 50.0; i <= 150.0; i += 10.0 {
 		marketPrice := contract.StrikePrice * i / 100
 		reward := 0.0
 		if contract.Type == "Call" && contract.LongShort == "long" {
@@ -95,7 +95,7 @@ type AnalysisResponse struct {
 // @Produce json
 // @Param params body []models.OptionContract true "Option contracts"
 // @Success 200 {object} []AnalysisResponse
-// @Router /analyze [post]
+// @Router /analysis [post]
 func AnalysisHandler(context *gin.Context) {
 	contracts := []models.OptionContract{}
 

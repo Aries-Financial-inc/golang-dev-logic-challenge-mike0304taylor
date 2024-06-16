@@ -12,7 +12,7 @@ import (
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
 
-	router.POST("/analyze", handlers.AnalysisHandler)
+	router.POST("/analysis", handlers.AnalysisHandler)
 	router.GET("swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	return router
